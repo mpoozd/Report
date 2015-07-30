@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.report" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:name=".Ppar"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".Pparse"
+            android:label="Pparse" >
+        </activity>
+        <activity
+            android:name=".Start"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Student"
+            android:label="@string/title_activity_student" >
+        </activity>
+        <activity
+            android:name=".Sec"
+            android:label="@string/title_activity_sec" >
+        </activity>
+        <activity
+            android:name=".DispatchActivity"
+            android:label="@string/title_activity_dispatch" >
+        </activity>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Report</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_student">Student</string>
+    <string name="title_activity_sec">Sec</string>
+    <string name="title_activity_dispatch">DispatchActivity</string>
+    <string name="login">login</string>
+    <string name="Submit">Submit</string>
+    <string name="Uplaod">Upload</string>
+    <string name="title_activity_ppar">Ppar</string>
+</resources>
