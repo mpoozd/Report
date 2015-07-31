@@ -22,19 +22,21 @@ public class DispatchActivity extends ActionBarActivity {
         setContentView(R.layout.activity_dispatch);
     }
 
-    public void onResume (){
-        super.onResume();
-        getLastestPosts();
-    }
+    private void refreshPostList() {
 
-    protected void getLastestPosts(){
-        ParseQuery query = new ParseQuery(Student.POSTS);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
+        ParseQuery<ParseObject> q = ParseQuery.getQuery("Post");
+        q.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> llist, ParseException e) {
+                if (e == null) {
+                    // Access data using the `get` methods for the object
+                    String build = llist.getBuild();
+                    // Access special values that are built-in to each object
+                    String objectId = llist.getObjectId();
+                    // Do whatever you want with the data...
+                    ListView postsListView = (ListView) findViewById(R.id.listView);
+
+                } else {
+                }
             }
-        }
-
+        });
     }
-
-}
