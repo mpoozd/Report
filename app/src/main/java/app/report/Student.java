@@ -14,7 +14,7 @@ import com.parse.ParseObject;
 
 public class Student extends ActionBarActivity {
 
-    public static final String POSTS = "post";
+    public static final String POSTS = "Post";
     public static final String BULD = "build";
     public static final String PLAT = "plate";
     public static final String PARRK = "park";
@@ -44,11 +44,11 @@ public class Student extends ActionBarActivity {
 
                 if (!build.equals("")){
 
-                    ParseObject post = new ParseObject(POSTS);
-                    post.put(BULD,build);
-                    post.put(PLAT,plate);
-                    post.put(PARRK,park);
-                    post.saveInBackground();
+                    ParseObject Post = new ParseObject("Post");
+                    Post.put("build", build);
+                    Post.put("plate", plate);
+                    Post.put("park", park);
+                    Post.saveInBackground();
 
                     finish();
                 }

@@ -33,7 +33,7 @@ public class Start extends ActionBarActivity {
         but2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ii = new Intent(Start.this, Sec.class);
+                Intent ii = new Intent(Start.this, DispatchActivity.class);
                 startActivity(ii);
             }
         });

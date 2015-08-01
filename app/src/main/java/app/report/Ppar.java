@@ -2,6 +2,7 @@ package app.report;
 
 import android.app.Application;
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 
 public class Ppar extends Application {
