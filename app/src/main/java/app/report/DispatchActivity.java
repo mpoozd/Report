@@ -2,9 +2,13 @@ package app.report;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SimpleAdapter;
 import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import java.util.ArrayList;
@@ -43,18 +47,32 @@ public class DispatchActivity extends ListActivity {
                         article.put("plate",
                                 result.getString("plate"));
                         articles.add(article);
+
+                        ParseFile picture = result.getParseFile("picture");
+                        final ParseImageView imageView = (ParseImageView) findViewById(R.id.imageView);
+                        imageView.setParseFile(picture);
+                        imageView.loadInBackground(new GetDataCallback() {
+                            public void done(byte[] data, ParseException e) {
+                                // The image is loaded and displayed!
+                                int oldHeight = imageView.getHeight();
+                                int oldWidth = imageView.getWidth();
+                                Log.v("LOG!!!!!!", "imageView height = " + oldHeight);      // DISPLAYS 90 px
+                                Log.v("LOG!!!!!!", "imageView width = " + oldWidth);        // DISPLAYS 90 px
+                            }
+                        });
+
                     }
                     SimpleAdapter adapter = new SimpleAdapter(
                             DispatchActivity.this, articles,
-                            R.layout.posts, new String[] {
+                            R.layout.posts, new String[]{
                             "build",
-                           "park",
-                            "plate" }, new int[] {
+                            "park",
+                            "plate"}, new int[]{
                             R.id.tvi1, R.id.tvi2, R.id.tvi3});
                     setListAdapter(adapter);
-                } else {
-
                 }
+
+
             }
         });
     }
