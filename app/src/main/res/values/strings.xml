@@ -11,4 +11,43 @@
     <string name="Uplaod">Upload</string>
     <string name="title_activity_ppar">Ppar</string>
     <string name="title_activity_post">Post</string>
+    <string name="title_activity_veiwpost">Veiwpost</string>
+    <string name="title_activity_view_post">ViewPost</string>
+    <string name="title_activity_pid">Pid</string>
+    <string name="signup_error_message">Error</string>
+    <string name="signup_error_title">error</string>
+    <string name="subtimto">Please fill all fields</string>
+    <string name="picnull">Please attach an image</string>
+    <string name="ffff">fff</string>
+    <string name="onnn">1</string>
+    <string name="bb">bbbb</string>
+    <string name="ttw">2</string>
+
+    <string-array name="spnrr">
+        <item>First</item>
+        <item>Second</item>
+    </string-array>
+
+
+    <string-array name="spnrr2">
+        <item>East</item>
+        <item>West</item>
+    </string-array>
+
+    <string-array name="spnrr22">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="title_activity_fragment">Fragment</string>
+    <string name="title_activity_view_d">ViewD</string>
+    <string name="tap1">New Reports</string>
+    <string name="tap2">Done Reports</string>
+    <string name="title_activity_newuser">Newuser</string>
+
+    <string name="title_activity_image_acv">Image</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="newuser">Done</string>
+    <string name="title_activity_blankkk">blankkk</string>
+
 </resources>

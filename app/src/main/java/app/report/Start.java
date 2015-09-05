@@ -11,6 +11,8 @@ public class Start extends ActionBarActivity {
 
     Button but1;
     Button but2;
+    Button but3;
+    Button but4;
 
 
     @Override
@@ -18,8 +20,11 @@ public class Start extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+
         but1 = (Button)findViewById(R.id.but1);
         but2= (Button)findViewById(R.id.but2);
+        but3 = (Button)findViewById(R.id.but3);
+        but4 = (Button)findViewById(R.id.but4);
 
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,8 +38,22 @@ public class Start extends ActionBarActivity {
         but2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ii = new Intent(Start.this, DispatchActivity.class);
-                startActivity(ii);
+                Intent i = new Intent(Start.this, FragClass.class);
+                startActivity(i);
+            }
+        });
+        but3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Start.this,Sec.class);
+                startActivity(i);
+            }
+        });
+        but4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Start.this,NewUser.class);
+                startActivity(i);
             }
         });
     }

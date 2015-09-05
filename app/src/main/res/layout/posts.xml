@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="-10dp"
+
+    android:orientation="vertical"
+    android:paddingBottom="-10dp" tools:context="app.report.DispatchActivity"
+    android:background="@android:color/white"
+    android:layout_marginTop="-10dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="15dp"
+        android:scaleType="centerCrop"
+
+
+        />
+
+    <TextView
+        android:id="@+id/tvi1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_toRightOf="@id/imageView"
+        android:hint="aaaaaaaa"
+
+        />
+
+    <TextView
+        android:id="@+id/tvi2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvi1"
+        android:layout_toRightOf="@id/imageView" />
+
+        <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/tvi3"
+            android:layout_below="@+id/tvi2"
+            android:layout_toRightOf="@id/imageView"
+            android:hint="cccccc" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_below="@+id/tvi2"
+        android:layout_toRightOf="@+id/tvi3"
+        android:id="@+id/tvi4"
+        android:hint="tttt"
+        android:layout_marginLeft="15dp" />
+
+</RelativeLayout>
