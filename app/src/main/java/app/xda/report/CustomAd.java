@@ -1,44 +1,38 @@
-package app.report;
+package app.xda.report;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.view.LayoutInflater;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
-import com.parse.SaveCallback;
-import com.squareup.picasso.Picasso;
-
+import com.parse.ParseUser;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 
 public class CustomAd extends ParseQueryAdapter<ParseObject> {
 
 
     private Context context;
-    public TextView titleTextView;
+    TextView titleTextView;
     protected Uri fileUri;
 
-    protected List<ParseObject> objectList;
+
+private DispatchActivity dispatchActivitya;
+
+    public ParseObject object ;
+    String buo;
+    String ob;
 
 
 
@@ -49,9 +43,14 @@ public class CustomAd extends ParseQueryAdapter<ParseObject> {
         super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
             public ParseQuery create() {
                 ParseQuery query = new ParseQuery(Pid.P_POST);
+                ParseUser user = ParseUser.getCurrentUser();
 
 
                 query.orderByDescending("createdAt");
+                query.whereEqualTo("spanr", user.getString("spanr"));
+                query.whereEqualTo("spanr2",user.getString("spanr2"));
+                query.whereEqualTo("dd",false);
+
 
 
 
@@ -86,7 +85,7 @@ public class CustomAd extends ParseQueryAdapter<ParseObject> {
 
         // Covert CreatedAt to String
         Date date = object.getCreatedAt();
-        Format dtatformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Format dtatformat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String reportDate = dtatformat.format(date);
 
 
@@ -99,6 +98,8 @@ public class CustomAd extends ParseQueryAdapter<ParseObject> {
         plate.setText(object.getString(Pid.P_PLAT));
         final TextView ctr = (TextView) v.findViewById(R.id.tvi4);
         ctr.setText(reportDate);
+        final CardView cardView = (CardView)v.findViewById(R.id.card_view1);
+        cardView.setPreventCornerOverlap(false);
 
 
 
@@ -107,7 +108,8 @@ public class CustomAd extends ParseQueryAdapter<ParseObject> {
 
 
 
-        ctr.setOnClickListener(new View.OnClickListener() {
+
+        cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -119,6 +121,8 @@ public class CustomAd extends ParseQueryAdapter<ParseObject> {
                 i.putExtra("plate",plate.getText().toString());
                 i.putExtra("d", ctr.getText().toString());
                 i.setData(Uri.parse(imageFile.getUrl()));
+                i.putExtra("pObjectId",object.getObjectId());
+
 
 
 
@@ -128,8 +132,8 @@ public class CustomAd extends ParseQueryAdapter<ParseObject> {
 
         return v;
 
-
     }
+
 
 
 

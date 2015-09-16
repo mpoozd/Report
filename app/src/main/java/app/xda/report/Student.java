@@ -1,49 +1,39 @@
-package app.report;
+package app.xda.report;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.Parse;
-import com.parse.ParseException;
+import com.parse.ParseACL;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.SaveCallback;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
-public class Student extends Activity {
+public class Student extends AppCompatActivity {
 
     public static final String POSTS = "Post";
     public static final String BULD = "build";
@@ -115,6 +105,7 @@ public class Student extends Activity {
 
                 }
 
+
                 // SDK > 19 (Android 4.4)
                 else {
                     try {
@@ -146,6 +137,13 @@ public class Student extends Activity {
 
                     }
 
+
+                }
+                // if an image selected
+                if (decodeUri!=null){
+                    ImageView iii = (ImageView)findViewById(R.id.checkimg);
+                    Drawable im = ContextCompat.getDrawable(Student.this,R.mipmap.ic_action_tick);
+                    iii.setImageDrawable(im);
                 }
 
             }
@@ -201,6 +199,8 @@ public class Student extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+
+
         final Spinner spinner = (Spinner) findViewById(R.id.spnr);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -236,6 +236,8 @@ public class Student extends Activity {
 
 
 
+
+
         mbuild = (EditText) findViewById(R.id.bulding1);
         mpark = (EditText) findViewById(R.id.parking1);
         mplate = (EditText) findViewById(R.id.plate1);
@@ -250,8 +252,11 @@ public class Student extends Activity {
                 startActivityForResult(choosepic, PICK_PHOTO);
 
 
+
+
             }
         });
+
 
 
         mbut.setOnClickListener(new View.OnClickListener() {
@@ -279,12 +284,17 @@ public class Student extends Activity {
                 }
                 else {
 
+
                     byte[] fileBytes = FileHelper.getByteArrayFromFile(Student.this, decodeUri);
                     fileBytes=FileHelper.reduceImageForUpload(fileBytes);
 
                     ParseFile imageFile = new ParseFile("img.jpeg", fileBytes);
                     imageFile.saveInBackground();
 
+                    ParseACL acl = new ParseACL();
+                    acl.setPublicWriteAccess(true);
+                    acl.setPublicReadAccess(true);
+                    acl.setRoleWriteAccess("ad",true);
                     ParseObject Post = new ParseObject(Pid.P_POST);
                     Post.put(Pid.B_BULD, build);
                     Post.put(Pid.P_PARK, park);
@@ -292,6 +302,8 @@ public class Student extends Activity {
                     Post.put(Pid.I_IMG, imageFile);
                     Post.put(Pid.S_Pnr,arr);
                     Post.put(Pid.S_Pnr2,arr2);
+                    Post.put(Pid.D_Done,false);
+                    Post.setACL(acl);
 
 
 

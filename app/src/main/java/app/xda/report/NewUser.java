@@ -1,4 +1,4 @@
-package app.report;
+package app.xda.report;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -65,11 +67,16 @@ public class NewUser extends Activity {
     }
     private void SignUp (){
         ParseUser user = new ParseUser();
+        ParseACL acl = new ParseACL(ParseUser.getCurrentUser());
+        acl.setRoleReadAccess("ad",true);
 
        user.setUsername(usernameEditText.getText().toString());
         user.setPassword(passwordEditText.getText().toString());
         user.put(Pid.S_Pnr, arr);
         user.put(Pid.S_Pnr2, arr2);
+
+
+
 
         // Validate the log in data
         boolean validationError = false;

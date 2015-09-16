@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.report" >
+    package="app.xda.report" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,13 +12,13 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name=".Ppar"
+        android:name="app.xda.report.Ppar"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Start"
+            android:name="app.xda.report.Start"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,28 +27,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Student"
-            android:label="@string/title_activity_student" >
+            android:name="app.xda.report.Student"
+            android:label="@string/title_activity_student"
+            android:theme="@style/Blank" >
         </activity>
         <activity
-            android:name=".Sec"
+            android:name="app.xda.report.Sec"
             android:label="@string/title_activity_sec" >
         </activity>
         <activity
-            android:name=".ViewPost"
+            android:name="app.xda.report.ViewPost"
             android:label="@string/title_activity_view_post" >
         </activity>
-        <activity android:name=".FragClass"
-            android:theme="@style/AppTheme">
+        <activity
+            android:name="app.xda.report.FragClass"
+            android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name=".NewUser"
+            android:name="app.xda.report.NewUser"
             android:label="@string/title_activity_newuser" >
         </activity>
         <activity
-            android:name=".ImageAcv"
+            android:name="app.xda.report.ImageAcv"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/FullscreenTheme" >
+        </activity>
+        <activity
+            android:name="app.xda.report.ViewPostDone"
+            android:label="@string/title_activity_view_post_done" >
         </activity>
     </application>
 

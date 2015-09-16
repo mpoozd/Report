@@ -1,4 +1,4 @@
-package app.report;
+package app.xda.report;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.parse.LogInCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 

@@ -1,12 +1,5 @@
-package app.report;
+package app.xda.report;
 
-import android.app.Application;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 

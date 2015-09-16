@@ -1,50 +1,40 @@
-package app.report;
+package app.xda.report;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseImageView;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 
-public class ViewPost extends Activity {
-
+public class ViewPostDone extends Activity {
     String build;
     String park;
     String plate;
     String imgv;
     String crt;
-
+    Button returnb;
+    String userId;
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_post);
+        setContentView(R.layout.view_post_done);
         TextView buildText = (TextView)findViewById(R.id.tvi11);
         TextView parkText = (TextView)findViewById(R.id.tvi22);
         TextView plateText = (TextView)findViewById(R.id.tvi33);
         TextView crtx = (TextView)findViewById(R.id.tvi44);
+        TextView user = (TextView)findViewById(R.id.doneuser);
+        Button rebut = (Button)findViewById(R.id.doneBut);
+        CardView cardView = (CardView)findViewById(R.id.card_view1);
+        cardView.setPreventCornerOverlap(false);
 
         ImageView img = (ImageView)findViewById(R.id.imgv);
         Intent i = getIntent();
@@ -52,6 +42,7 @@ public class ViewPost extends Activity {
         park = i.getStringExtra("park");
         plate = i.getStringExtra("plate");
         crt = i.getStringExtra("d");
+        userId = i.getStringExtra("us");
 
         final Uri imgUri = getIntent().getData();
         ImageLoader.getInstance().displayImage(imgUri.toString(), img);
@@ -61,14 +52,15 @@ public class ViewPost extends Activity {
         parkText.setText(park);
         plateText.setText(plate);
         crtx.setText(crt);
-        img.setOnClickListener(new View.OnClickListener() {
+        user.setText(userId);
+
+        rebut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ii = new Intent(ViewPost.this,ImageAcv.class);
-                ii.setData(imgUri);
-                startActivity(ii);
+                finish();
             }
         });
+
     }
 
 }

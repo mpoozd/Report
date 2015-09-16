@@ -1,40 +1,18 @@
-package app.report;
+package app.xda.report;
 
-import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.support.v4.app.*;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.support.v4.app.Fragment;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
-import com.parse.FindCallback;
-import com.parse.GetDataCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseImageView;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class DispatchActivity extends Fragment {
@@ -44,9 +22,10 @@ public class DispatchActivity extends Fragment {
 
     private ParseQueryAdapter<ParseObject> mainAdapter;
     private CustomAd urgentTodosAdapter;
-    private ListView listView;
+     ListView listView;
     Context context;
     SwipeRefreshLayout mSwipeRefreshLayout;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,8 +58,11 @@ public class DispatchActivity extends Fragment {
 
 
 
+
         // Initialize the subclass of ParseQueryAdapter
         urgentTodosAdapter = new CustomAd(this.getActivity());
+
+
 
 
         // Initialize ListView and set initial view to mainAdapter
@@ -94,11 +76,14 @@ public class DispatchActivity extends Fragment {
 
 
 
+
 // Initialize toggle button
         if (listView.getAdapter() == mainAdapter) {
             listView.setAdapter(urgentTodosAdapter);
             urgentTodosAdapter.loadObjects();
             }
+
+
 
         return rootView;
 

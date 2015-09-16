@@ -14,12 +14,12 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:id="@+id/imgv"
-        android:scaleType="centerCrop"
-        android:background="@drawable/ro"/>
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:id="@+id/imgv"
+                android:scaleType="centerCrop"
+                android:background="@drawable/ro"/>
             <TextView
                 android:id="@+id/tvi44"
                 android:layout_width="fill_parent"
@@ -39,45 +39,53 @@
 
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/tvi11"
-            android:layout_below="@id/imgv"
-            android:hint="aaaaaa"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/tvi11"
+                android:layout_below="@id/imgv"
+                android:hint="aaaaaa"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/tvi22"
-            android:layout_below="@id/tvi11"
-            android:hint="bbbbb" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/tvi22"
+                android:layout_below="@id/tvi11"
+                android:hint="bbbbb" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/tvi33"
-            android:layout_below="@id/tvi22"
-            android:layout_alignParentBottom="true"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/tvi33"
+                android:layout_below="@id/tvi22"
 
-            android:hint="cccccc" />
+                android:hint="cccccc" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/doneuser"
+                android:layout_below="@+id/tvi33"
+                android:layout_alignParentBottom="true" />
             <Button
                 style="?android:attr/borderlessButtonStyle"
                 android:textColor="#2196f3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Done"
+                android:text="Return"
                 android:id="@+id/doneBut"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true" />
-    </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 
 

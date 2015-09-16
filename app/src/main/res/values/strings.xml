@@ -8,7 +8,7 @@
     <string name="title_activity_dispatch">DispatchActivity</string>
     <string name="login">login</string>
     <string name="Submit">Submit</string>
-    <string name="Uplaod">Upload</string>
+    <string name="Uplaod">Choose image </string>
     <string name="title_activity_ppar">Ppar</string>
     <string name="title_activity_post">Post</string>
     <string name="title_activity_veiwpost">Veiwpost</string>
@@ -49,5 +49,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="newuser">Done</string>
     <string name="title_activity_blankkk">blankkk</string>
+    <string name="title_activity_view_post_done">ViewPostDone</string>
 
 </resources>

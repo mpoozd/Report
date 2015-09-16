@@ -1,10 +1,22 @@
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_view1"
+    card_view:cardCornerRadius="4dp"
+    >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="app.report.Student"
-    android:background="@android:color/white">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="app.xda.report.Student">
+
+
 
     <EditText
         android:layout_width="match_parent"
@@ -17,6 +29,7 @@
         android:layout_alignParentStart="true"
         android:autoText="false"
         android:hint="Bulding Number"
+        android:textColor="#ff000000"
         android:layout_marginTop="100dp" />
 
     <EditText
@@ -29,31 +42,29 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:hint="Parking Number"
+        android:textColor="#ff000000"
         android:layout_marginTop="20dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:ems="10"
         android:id="@+id/plate1"
         android:layout_below="@+id/parking1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:hint="Plate Number"
+        android:textColor="#ff000000"
         android:layout_marginTop="20dp" />
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Attach Image"
-        android:id="@+id/textView"
+        android:id="@+id/checkimg"
         android:layout_below="@+id/plate1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="25dp"
-        android:layout_marginRight="130dp" />
+        android:layout_marginRight="180dp" />
 
 
 
@@ -61,10 +72,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Uplaod"
+        android:textAllCaps="false"
         android:id="@+id/butup"
-        android:layout_alignTop="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
+        android:layout_alignTop="@+id/checkimg"
+        android:layout_toRightOf="@+id/checkimg"
+        android:layout_toEndOf="@+id/checkimg"
         android:layout_marginTop="-15dp"
         android:layout_marginLeft="0dp" />
 
@@ -72,13 +84,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Submit"
+        android:textAllCaps="false"
         android:id="@+id/butsend"
         android:layout_below="@+id/butup"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="80dp"
+
+
+ />
 
     <Spinner
+        style="?android:attr/spinnerItemStyle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spnr"
@@ -86,6 +103,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
+        android:background="@drawable/abc_spinner_textfield_background_material"
         android:entries="@array/arr1"/>
 
     <Spinner
@@ -93,19 +111,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/spnr2"
         android:layout_below="@+id/spnr"
+        android:layout_marginTop="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:entries="@array/arr2"
-        />
+        android:background="@drawable/abc_spinner_textfield_background_material"
+        android:entries="@array/arr2" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
+        android:text="Select the Area"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+ />
 
 </RelativeLayout>
+</android.support.v7.widget.CardView>
