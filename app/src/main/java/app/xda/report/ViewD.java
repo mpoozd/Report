@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +14,19 @@ import android.widget.ListView;
 import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter;
 
+import java.util.List;
+
 
 public class ViewD extends Fragment {
 
     private ParseQueryAdapter<ParseObject> mainAdapter;
-    private CustomAdDone urgentTodosAdapter;
+    private ParseQueryRecyclerViewAdapter queryRecyclerViewAdapter;
+    private CustomAdDone customAdDone;
     private ListView listView;
     Context context;
     SwipeRefreshLayout mSwipeRefreshLayout;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,37 +38,20 @@ public class ViewD extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                listView.setAdapter(mainAdapter);
-                mainAdapter.loadObjects();
-                if (listView.getAdapter() == mainAdapter) {
-                    listView.setAdapter(urgentTodosAdapter);
-                    urgentTodosAdapter.loadObjects();
-                }
+                queryRecyclerViewAdapter.loadObjects();
+
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
 
-        // Initialize main ParseQueryAdapter
-        mainAdapter = new ParseQueryAdapter<ParseObject>(this.getActivity(), Pid.P_POST);
-        mainAdapter.setTextKey(Pid.B_BULD);
-        mainAdapter.setTextKey(Pid.P_PARK);
-        mainAdapter.setTextKey(Pid.P_PLAT);
-        mainAdapter.setImageKey(Pid.I_IMG);
+        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv);
+        LinearLayoutManager lm = new LinearLayoutManager(getActivity());
+        rv.setLayoutManager(lm);
+        rv.setHasFixedSize(true);
+        queryRecyclerViewAdapter = new ParseQueryRecyclerViewAdapter(getActivity(),"Post");
+        queryRecyclerViewAdapter.loadObjects();
 
-
-
-
-
-        // Initialize the subclass of ParseQueryAdapter
-        urgentTodosAdapter = new CustomAdDone(this.getActivity());
-
-
-
-
-        // Initialize ListView and set initial view to mainAdapter
-        listView = (ListView) rootView.findViewById(R.id.list);
-        listView.setAdapter(mainAdapter);
-        mainAdapter.loadObjects();
+        customAdDone = new CustomAdDone(getActivity(),container);
 
 
 
@@ -69,11 +59,11 @@ public class ViewD extends Fragment {
 
 
 
-// Initialize toggle button
-        if (listView.getAdapter() == mainAdapter) {
-            listView.setAdapter(urgentTodosAdapter);
-            urgentTodosAdapter.loadObjects();
-        }
+
+        rv.setAdapter(queryRecyclerViewAdapter);
+
+
+
 
         return rootView;
 

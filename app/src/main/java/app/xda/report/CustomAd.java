@@ -2,31 +2,45 @@ package app.xda.report;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
+
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class CustomAd extends ParseQueryAdapter<ParseObject> {
+public class CustomAd extends ParseQueryAdapter<ParseObject>  {
 
 
     private Context context;
     TextView titleTextView;
     protected Uri fileUri;
-
+    double l , lg;
 
 private DispatchActivity dispatchActivitya;
 
@@ -34,16 +48,19 @@ private DispatchActivity dispatchActivitya;
     String buo;
     String ob;
 
+     ParseGeoPoint g;
 
 
 
-
-
-    public CustomAd(Context context) {
+    public CustomAd(final Context context) {
         super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
             public ParseQuery create() {
                 ParseQuery query = new ParseQuery(Pid.P_POST);
                 ParseUser user = ParseUser.getCurrentUser();
+                CustomAd c;
+                // c = new CustomAd(context);
+                //ParseGeoPoint geoPoint = new ParseGeoPoint(mCurrentLocation.getLatitude(),mCurrentLocation.getLongitude());
+
 
 
                 query.orderByDescending("createdAt");

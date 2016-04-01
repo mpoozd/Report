@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,7 +15,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 
-public class ViewPostDone extends Activity {
+public class ViewPostDone extends AppCompatActivity {
     String build;
     String park;
     String plate;
@@ -33,8 +35,7 @@ public class ViewPostDone extends Activity {
         TextView crtx = (TextView)findViewById(R.id.tvi44);
         TextView user = (TextView)findViewById(R.id.doneuser);
         Button rebut = (Button)findViewById(R.id.doneBut);
-        CardView cardView = (CardView)findViewById(R.id.card_view1);
-        cardView.setPreventCornerOverlap(false);
+
 
         ImageView img = (ImageView)findViewById(R.id.imgv);
         Intent i = getIntent();

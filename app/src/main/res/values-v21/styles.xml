@@ -3,13 +3,27 @@
 
         <style name="Blank" parent="Theme.AppCompat.Light">
                 <!--   your app branding color for the app bar -->
-                <item name="colorPrimary">#ff4184ee</item>
+                <item name="colorPrimary">#03A9F4</item>
                 <!--   darker variant for the status bar and contextual app bars -->
-                <item name="colorPrimaryDark">#ff3878d3</item>
+                <item name="colorPrimaryDark">#0288D1</item>
                 <!--   theme UI controls like checkboxes and text fields -->
                 <item name="android:textColorPrimary">@color/Withe</item>
                 <item name="android:textColor">#ff000000</item>
 
+
+
+        </style>
+
+        <style name="Transs" parent="Theme.AppCompat.Light">
+                <!--   your app branding color for the app bar -->
+                <item name="colorPrimary">#ff4184ee</item>
+                <!--   darker variant for the status bar and contextual app bars -->
+                <item name="android:statusBarColor">@android:color/transparent</item>
+                <item name="android:windowTranslucentStatus">true</item>
+
+                <!--   theme UI controls like checkboxes and text fields -->
+                <item name="android:textColorPrimary">@color/Withe</item>
+                <item name="android:textColor">#ff000000</item>
 
 
         </style>

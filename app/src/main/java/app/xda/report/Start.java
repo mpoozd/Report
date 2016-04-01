@@ -3,11 +3,14 @@ package app.xda.report;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.ParseAnalytics;
 
-public class Start extends Activity {
+
+public class Start extends AppCompatActivity {
 
     Button but1;
     Button but2;
@@ -20,7 +23,8 @@ public class Start extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-
+ParseAnalytics.trackAppOpenedInBackground(getIntent());
+        
         but1 = (Button)findViewById(R.id.but1);
         but2= (Button)findViewById(R.id.but2);
         but3 = (Button)findViewById(R.id.but3);
@@ -57,6 +61,7 @@ public class Start extends Activity {
             }
         });
     }
+
 
 
 }

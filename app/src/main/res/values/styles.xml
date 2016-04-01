@@ -2,27 +2,36 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--   your app branding color for the app bar -->
-        <item name="colorPrimary">#ff4184ee</item>
+        <item name="colorPrimary">#03A9F4</item>
         <!--   darker variant for the status bar and contextual app bars -->
-        <item name="colorPrimaryDark">#ff3878d3</item>
+        <item name="colorPrimaryDark">#0288D1</item>
         <!--   theme UI controls like checkboxes and text fields -->
-        <item name="colorAccent">#ffffffff</item>
     </style>
     <style name="Blank" parent="Theme.AppCompat.Light">
         <!--   your app branding color for the app bar -->
-        <item name="colorPrimary">#ff4184ee</item>
+        <item name="colorPrimary">#03A9F4</item>
         <!--   darker variant for the status bar and contextual app bars -->
-        <item name="colorPrimaryDark">#ff3878d3</item>
+        <item name="colorPrimaryDark">#0288D1</item>
         <!--   theme UI controls like checkboxes and text fields -->
-        <item name="android:textColorPrimary">@color/Withe</item>
         <item name="android:textColor">#ff000000</item>
+    </style>
 
-
-
-
+    <style name="Transs" parent="Theme.AppCompat.Light">
+        <!--   your app branding color for the app bar -->
+        <!--   darker variant for the status bar and contextual app bars -->
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="android:textColor">#ff000000</item>
+    </style>
+    <style name="Login" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:displayOptions">showTitle</item>
 
     </style>
 
+    <style name="SpinnerStyle" parent="android:Widget.Spinner">
+        <item name="android:drawableRight">@drawable/abc_spinner_mtrl_am_alpha</item>
+        <item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
+        <item name="android:dropDownVerticalOffset">0dip</item>
+    </style>
 
 
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">

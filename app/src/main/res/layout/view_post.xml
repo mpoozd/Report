@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent"
+
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context="app.xda.report.ViewPost">
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,10 +9,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/card_view1"
         card_view:cardCornerRadius="4dp"
+        android:layout_margin="2dp"
         >
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="250dp"
@@ -36,6 +37,15 @@
                 android:layout_alignBottom="@+id/imgv"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/expand_icon"
+                android:id="@+id/expand_button"
+                android:layout_marginRight="24dp"
+                android:layout_alignBaseline="@+id/tvi44"
+                android:layout_alignEnd="@+id/tvi44"
+                android:layout_alignRight="@+id/tvi44"/>
 
 
 
@@ -75,7 +85,9 @@
                 android:id="@+id/doneBut"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+
+
+        </RelativeLayout>
 
 </android.support.v7.widget.CardView>
 

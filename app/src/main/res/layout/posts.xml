@@ -9,7 +9,8 @@
     android:id="@+id/card_view1"
     card_view:cardCornerRadius="4dp"
         android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"    >
+        android:clickable="true"
+        android:layout_margin="2dp">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"

@@ -6,10 +6,10 @@ import com.parse.ParseObject;
 @ParseClassName("Post")
 public class Post extends ParseObject {
 
-    private String build;
-    private String park;
-    private String plate;
-    private String picture;
+    public String build;
+    public String park;
+    public String plate;
+    public String picture;
 
     public String getBuild() {
         return build;

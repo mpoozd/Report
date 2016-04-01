@@ -41,8 +41,9 @@ public class ViewPost extends Activity {
         TextView plateText = (TextView)findViewById(R.id.tvi33);
         TextView crtx = (TextView)findViewById(R.id.tvi44);
         Button done = (Button)findViewById(R.id.doneBut);
+        Button expandbut = (Button)findViewById(R.id.expand_button);
         CardView cardView = (CardView)findViewById(R.id.card_view1);
-cardView.setPreventCornerOverlap(false);
+        cardView.setPreventCornerOverlap(false);
 
 
         ImageView img = (ImageView)findViewById(R.id.imgv);
@@ -62,7 +63,7 @@ cardView.setPreventCornerOverlap(false);
         parkText.setText(park);
         plateText.setText(plate);
         crtx.setText(crt);
-        img.setOnClickListener(new View.OnClickListener() {
+        expandbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ii = new Intent(ViewPost.this, ImageAcv.class);

@@ -5,10 +5,13 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+
+import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,18 +26,42 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.Geofence;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.parse.ParseACL;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
-
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.UUID;
 
 
-public class Student extends AppCompatActivity {
+public class Student extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener {
 
+    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
+
+    private Location mLastLocation;
+
+    // Google client to interact with Google API
+    private GoogleApiClient mGoogleApiClient;
+
+    // boolean flag to toggle periodic location updates
+    private boolean mRequestingLocationUpdates = false;
+
+    private LocationRequest mLocationRequest;
+
+    // Location updates intervals in sec
+    private static int UPDATE_INTERVAL = 10000; // 10 sec
+    private static int FATEST_INTERVAL = 5000; // 5 sec
+    private static int DISPLACEMENT = 10; // 10 meters
     public static final String POSTS = "Post";
     public static final String BULD = "build";
     public static final String PLAT = "plate";
@@ -45,18 +72,21 @@ public class Student extends AppCompatActivity {
     protected Uri fileUri;
     protected Uri decodeUri18;
     Bitmap newbitmap;
-    TextView txtr,txtu;
+    TextView txtr,txtu, textll,textgg;
+    TextInputLayout inbuld , inpark , inplate;
 
     protected EditText mbuild;
     protected EditText mpark;
     protected EditText mplate;
     protected Button mbut;
-    protected Button mbup;
+    protected Button mbup,lbut;
     protected Spinner spinner;
-
     protected Uri decodeUri;
+    double dist;
+    byte[] fileBytes ;
 
-
+    public GoogleApiClient mgoogleApiClient;
+    private LocationServices mlocationServices;
 
     public String getRealPathFromURI(Uri contentUri){
 
@@ -115,8 +145,6 @@ public class Student extends AppCompatActivity {
                                 Student.this,
                                 data.getData());
 
-                        setTextViews(Build.VERSION.SDK_INT, data.getData()
-                                .getPath(), realPath);
 
                     } catch (Exception e) {
 
@@ -141,9 +169,13 @@ public class Student extends AppCompatActivity {
                 }
                 // if an image selected
                 if (decodeUri!=null){
+                    fileBytes = FileHelper.getByteArrayFromFile(Student.this, decodeUri);
+
+
                     ImageView iii = (ImageView)findViewById(R.id.checkimg);
                     Drawable im = ContextCompat.getDrawable(Student.this,R.mipmap.ic_action_tick);
                     iii.setImageDrawable(im);
+
                 }
 
             }
@@ -182,6 +214,7 @@ public class Student extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeFileDescriptor(imageSource, null, o2);
 
 
+
         } catch (FileNotFoundException e) {
             // handle errors
         } catch (IOException e) {
@@ -195,10 +228,47 @@ public class Student extends AppCompatActivity {
                 }
         }
     }
+    protected void displayLocation() {
+
+        mLastLocation = LocationServices.FusedLocationApi
+                .getLastLocation(mGoogleApiClient);
+        if (mLastLocation != null) {
+            double unlat = 24.70044326800795;
+            double unlon = 46.80518299341202;
+            double latitude = mLastLocation.getLatitude();
+            double longitude = mLastLocation.getLongitude();
+            double newlat = Math.toRadians(latitude - unlat);
+            double newlon = Math.toRadians(longitude - unlon);
+            double a = (Math.sin(newlat / 2) * Math.sin(newlon / 2)) +
+                    (Math.cos(Math.toRadians(latitude))) *
+                            (Math.cos(Math.toRadians(unlat))) *
+                            (Math.sin(newlon / 2)) *
+                            (Math.sin(newlon / 2));
+
+            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            dist = 6371 * c;
+
+
+            textll.setText(dist  + ", ");
+            textgg.setText(latitude + " " + longitude);
+
+
+
+        } else {
+
+            textll
+                    .setText("(Couldn't get the location. Make sure location is enabled on the device)");
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+          lbut = (Button)findViewById(R.id.butlocal);
+        textll = (TextView)findViewById(R.id.textloc1);
+        textgg = (TextView)findViewById(R.id.textView2);
+
 
 
         final Spinner spinner = (Spinner) findViewById(R.id.spnr);
@@ -216,12 +286,18 @@ public class Student extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
 
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        lbut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+displayLocation();
             }
         });
 
@@ -259,9 +335,22 @@ public class Student extends AppCompatActivity {
 
 
 
+
         mbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mLastLocation == null) {
+                    textgg.setText("Please make sure GPS is enabled");
+                }
+                else {
+                if (dist > 0.150) {
+                    textgg.setText("You do not allowed to send a report ");
+
+                }
+
+
+                else  {
+
                 String build = mbuild.getText().toString();
                 String park = mpark.getText().toString();
                 String plate = mplate.getText().toString();
@@ -274,49 +363,132 @@ public class Student extends AppCompatActivity {
 
 
 
-                if (build.isEmpty()||park.isEmpty()||plate.isEmpty()||decodeUri==null ){
-                    StringBuilder pic = new StringBuilder(getString(R.string.subtimto));
-
-                    Toast.makeText(Student.this, pic.toString(), Toast.LENGTH_LONG)
+                if (decodeUri==null || build.isEmpty() || park.isEmpty() || plate.isEmpty()) {
+                    Toast.makeText(Student.this,"Please fill all fields ", Toast.LENGTH_LONG)
                             .show();
-
-
                 }
+
+
+
+
+
+
+
+
+
+
                 else {
 
 
-                    byte[] fileBytes = FileHelper.getByteArrayFromFile(Student.this, decodeUri);
                     fileBytes=FileHelper.reduceImageForUpload(fileBytes);
 
                     ParseFile imageFile = new ParseFile("img.jpeg", fileBytes);
                     imageFile.saveInBackground();
+                    ParseGeoPoint geoPoint = new ParseGeoPoint(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+
 
                     ParseACL acl = new ParseACL();
                     acl.setPublicWriteAccess(true);
                     acl.setPublicReadAccess(true);
-                    acl.setRoleWriteAccess("ad",true);
+                    acl.setRoleWriteAccess("ad", true);
                     ParseObject Post = new ParseObject(Pid.P_POST);
                     Post.put(Pid.B_BULD, build);
                     Post.put(Pid.P_PARK, park);
                     Post.put(Pid.P_PLAT, plate);
                     Post.put(Pid.I_IMG, imageFile);
-                    Post.put(Pid.S_Pnr,arr);
-                    Post.put(Pid.S_Pnr2,arr2);
-                    Post.put(Pid.D_Done,false);
+                    Post.put(Pid.S_Pnr, arr);
+                    Post.put(Pid.S_Pnr2, arr2);
+                    Post.put(Pid.D_Done, false);
                     Post.setACL(acl);
+                    Post.put("Loc", geoPoint);
 
+                    Intent i = new Intent(Student.this,CustomAd.class);
+                    i.putExtra("l",mLastLocation.getLatitude());
+                    i.putExtra("g",mLastLocation.getLongitude());
 
 
                     Post.saveInBackground();
-                    finish();
-                }
+                    finish();}
+                }}
+
 
             }
 
         });
+        // First we need to check availability of play services
+        if (checkPlayServices()) {
+
+            // Building the GoogleApi client
+            buildGoogleApiClient();
+        }
+
 
     }
 
+    /**
+     * Method to display the location on UI
+     * */
 
+
+    /**
+     * Creating google api client object
+     * */
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API).build();
+    }
+
+    /**
+     * Method to verify google play services on the device
+     * */
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil
+                .isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "This device is not supported.", Toast.LENGTH_LONG)
+                        .show();
+                finish();
+            }
+            return false;
+        }
+        return true;
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.connect();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        checkPlayServices();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+displayLocation();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
 
 }
