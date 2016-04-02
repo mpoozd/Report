@@ -33,7 +33,7 @@
                 android:alpha="0.8"
                 android:textColor="#fff"
                 android:textSize="19sp"
-                android:text="Test"
+                android:text="اسم النادي"
                 android:layout_alignBottom="@+id/imgv"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -45,6 +45,7 @@
                 android:layout_marginRight="24dp"
                 android:layout_alignBaseline="@+id/tvi44"
                 android:layout_alignEnd="@+id/tvi44"
+                android:visibility="gone"
                 android:layout_alignRight="@+id/tvi44"/>
 
 
@@ -81,7 +82,7 @@
                 android:textColor="#2196f3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Done"
+                android:text="إنضمام"
                 android:id="@+id/doneBut"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true" />

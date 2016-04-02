@@ -49,7 +49,7 @@ public class CustomAdDone<T extends ParseObject > extends RecyclerView.Adapter<C
             public ParseQuery<ParseObject> create() {
 
                 // Here we can configure a ParseQuery to our heart's desire.
-                ParseQuery query = new ParseQuery("Post");
+                ParseQuery query = new ParseQuery("Book");
                 query.whereEqualTo("dd",true);
                 return query;
             }

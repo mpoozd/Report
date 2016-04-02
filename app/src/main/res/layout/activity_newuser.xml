@@ -11,16 +11,16 @@
         android:layout_height="190dp"
         app:layout_collapseMode="pin"
         android:id="@+id/framebar"
-        android:background="#ff03a9f4">
+        android:background="#607D8B">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@android:color/primary_text_dark"
             android:alpha=".9"
             android:fontFamily="sans-serif-light"
-            android:text="New User"
+            android:text="تسجيل جديد"
             android:id="@+id/textttt3"
             android:layout_marginBottom="20dp"
             android:layout_gravity="center_horizontal|bottom" />
@@ -44,7 +44,7 @@
             android:id="@+id/sname"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:hint="Name"
+            android:hint="الاسم"
             android:layout_marginTop="25dp"
             android:layout_centerVertical="true" />
 
@@ -57,7 +57,7 @@
         android:layout_below="@+id/sname"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="E-mail"
+        android:hint="البريد الالكتروني"
         android:layout_centerVertical="true" />
 
     <EditText
@@ -69,7 +69,7 @@
         android:layout_below="@+id/semail"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="Password"
+        android:hint="كلمة المرور"
         android:layout_marginTop="5dp"
         android:imeActionLabel="@string/login"
         android:imeOptions="actionUnspecified"/>
@@ -79,14 +79,14 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="تسجيل"
         android:id="@+id/sibut"
         android:layout_below="@+id/spass"
         android:layout_marginRight="100dp"
         android:layout_marginLeft="100dp"
         android:textAllCaps="false"
         android:layout_marginTop="45dp"
-        android:backgroundTint="#ff03a9f4"
+        android:backgroundTint="#607D8B"
         android:fontFamily="sans-serif-light"
         android:textColor="@android:color/primary_text_dark" />
 </RelativeLayout>

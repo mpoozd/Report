@@ -3,11 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="app.xda.report.Student">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_collapseMode="pin"
+        android:id="@+id/framebar"
+        android:background="#607D8B">
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:text="@string/Uplaod"
+        android:textAllCaps="false"
+        android:id="@+id/imgbut"
+        android:background="#ffd6d6d6"
+        android:src="@drawable/aadd"
+        android:layout_below="@+id/framebar"
+        android:layout_marginTop="-15dp"
+        android:layout_marginLeft="0dp" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:layout_width="match_parent"
@@ -15,17 +31,15 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/bulding1"
-        android:layout_below="@+id/spnr2"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/imgbut"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:autoText="false"
-        android:hint="Bulding Number"
+        android:hint="اسم النادي"
         android:singleLine="true"
         app:met_errorColor="#FF0000"
         app:met_floatingLabel="highlight"
         app:met_primaryColor="#ff03a9f4"
-        android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"/>
 
@@ -38,7 +52,7 @@
         android:layout_below="@+id/bulding1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:hint="Parking Number"
+        android:hint="نبذة عن النادي"
         android:layout_marginTop="5dp"
         android:singleLine="true"
         app:met_errorColor="#FF0000"
@@ -50,13 +64,12 @@
     <com.rengwuxian.materialedittext.MaterialEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:ems="10"
         android:id="@+id/plate1"
         android:layout_below="@+id/parking1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:hint="Plate Number"
+        android:hint="الاهتمامات"
         android:layout_marginTop="5dp"
         android:singleLine="true"
         app:met_errorColor="#FF0000"
@@ -85,20 +98,20 @@
         android:layout_toRightOf="@+id/checkimg"
         android:layout_toEndOf="@+id/checkimg"
         android:layout_marginTop="-15dp"
+        android:visibility="invisible"
         android:layout_marginLeft="0dp" />
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="@string/Submit"
-        android:textAllCaps="false"
+        android:text="إنشاء"
         android:id="@+id/butsend"
+        android:backgroundTint="#607D8B"
+        android:textColor="@android:color/primary_text_dark"
+
+
         android:layout_below="@+id/textloc1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-
-
- />
+        android:layout_centerHorizontal="true" />
 
     <Spinner
         style="?android:attr/spinnerItemStyle"
@@ -108,7 +121,8 @@
         android:layout_marginTop="20dp"
         android:entries="@array/arr1"
         android:layout_toStartOf="@+id/spnr2"
-        android:layout_toLeftOf="@+id/spnr2" />
+        android:layout_toLeftOf="@+id/spnr2"
+        android:visibility="gone"/>
 
     <Spinner
         android:layout_width="fill_parent"
@@ -117,7 +131,9 @@
         android:entries="@array/arr2"
         android:layout_alignTop="@+id/spnr"
         android:layout_alignLeft="@+id/butup"
-        android:layout_alignStart="@+id/butup" />
+        android:layout_alignStart="@+id/butup"
+        android:visibility="gone"
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -126,15 +142,17 @@
         android:text="Select the Area"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
+        android:visibility="invisible"
  />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Location"
+        android:text="المكان"
         android:id="@+id/butlocal"
         android:layout_alignTop="@+id/butup"
         android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -144,8 +162,20 @@
         android:text="Small Text"
         android:id="@+id/textloc1"
         android:layout_below="@+id/butup"
-        android:layout_alignRight="@+id/inputplate"
-        android:layout_alignEnd="@+id/inputplate" />
+        android:visibility="invisible"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@android:color/primary_text_dark"
+        android:alpha=".9"
+        android:text="إنشاء نادي"
+        android:id="@+id/textttt3"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

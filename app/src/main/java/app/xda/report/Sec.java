@@ -29,6 +29,15 @@ public class Sec extends AppCompatActivity {
 
 
 
+        TextView sn = (TextView)findViewById(R.id.textView7);
+
+        sn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Sec.this, NewUser.class);
+                startActivity(i);
+            }
+        });
 
         // Set up the login form.
         usernameEditText = (EditText) findViewById(R.id.em);

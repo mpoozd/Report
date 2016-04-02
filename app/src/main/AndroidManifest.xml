@@ -12,24 +12,25 @@
       IMPORTANT: Change "com.parse.starter.permission.C2D_MESSAGE" in the lines below
       to match your app's package name + ".permission.C2D_MESSAGE".
     -->
-    <permission android:protectionLevel="signature"
-        android:name="app.xda.report" />
+    <permission
+        android:name="app.xda.report"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="app.xda.report" />
-
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.LOCATION_HARDWARE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
-        android:name="app.xda.report.Ppar"
+        android:name=".Ppar"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -39,7 +40,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="app.xda.report.Start"
+            android:name=".Start"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,60 +49,68 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="app.xda.report.Student"
+            android:name=".Student"
             android:label="@string/title_activity_student"
-            android:theme="@style/Blank" >
-        </activity>
-        <activity
-            android:name="app.xda.report.Sec"
-            android:label="@string/title_activity_sec" >
-        </activity>
-        <activity
-            android:name="app.xda.report.ViewPost"
-            android:label="@string/title_activity_view_post" >
-        </activity>
-        <activity
-            android:name="app.xda.report.FragClass"
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name="app.xda.report.NewUser"
+            android:name=".Sec"
+            android:label="@string/title_activity_sec" >
+        </activity>
+        <activity
+            android:name=".ViewPost"
+            android:label="@string/title_activity_view_post" >
+        </activity>
+        <activity
+            android:name=".FragClass"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".NewUser"
             android:label="@string/title_activity_newuser" >
         </activity>
         <activity
-            android:name="app.xda.report.ImageAcv"
+            android:name=".ImageAcv"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/FullscreenTheme" >
         </activity>
         <activity
-            android:name="app.xda.report.ViewPostDone"
-            android:label="@string/title_activity_view_post_done"
-            >
+            android:name=".ViewPostDone"
+            android:label="@string/title_activity_view_post_done" >
         </activity>
 
-        <!-- push  -->
+        <!-- push -->
         <service android:name="com.parse.PushService" />
-        <receiver android:name="com.parse.ParsePushBroadcastReceiver"
-            android:exported="false">
+
+        <receiver
+            android:name="com.parse.ParsePushBroadcastReceiver"
+            android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
                 <action android:name="com.parse.push.intent.DELETE" />
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.parse.GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-                <!--
-                  IMPORTANT: Change "com.parse.starter" to match your app's package name.
-                -->
+                <!-- IMPORTANT: Change "com.parse.starter" to match your app's package name. -->
                 <category android:name="app.xda.report" />
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name=".contetmain"
+            android:label="@string/title_activity_contetmain" >
+        </activity>
+        <activity
+            android:name=".fragmentmaster"
+            android:label="@string/title_activity_fragmentmaster" >
+        </activity>
     </application>
 
 </manifest>

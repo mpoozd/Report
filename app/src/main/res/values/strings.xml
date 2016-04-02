@@ -40,15 +40,27 @@
     </string-array>
     <string name="title_activity_fragment">Fragment</string>
     <string name="title_activity_view_d">ViewD</string>
-    <string name="tap1">New Reports</string>
-    <string name="tap2">Done Reports</string>
-    <string name="title_activity_newuser">Newuser</string>
+    <string name="tap1">بحث</string>
+    <string name="tap2">أنديتي</string>
+    <string name="title_activity_newuser">تسجيل جديد</string>
 
     <string name="title_activity_image_acv">Image</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="newuser">Done</string>
+    <string name="newuser">شكرا لتسجيلك</string>
     <string name="title_activity_blankkk">blankkk</string>
     <string name="title_activity_view_post_done">ViewPostDone</string>
+    <string name="title_activity_min_drawer">MinDrawer</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+    <string name="title_activity_contetmain">contetmain</string>
+    <string name="title_activity_fragmentmaster">fragmentmaster</string>
 
 </resources>

@@ -2,12 +2,14 @@ package app.xda.report;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseACL;
@@ -18,8 +20,7 @@ import com.parse.SignUpCallback;
 
 public class NewUser extends Activity {
 
-    EditText usernameEditText;
-    EditText passwordEditText;
+    EditText usernameEditText , userEmEditText, passwordEditText;
     Button signUpButton;
     protected String arr;
     protected String arr2;
@@ -28,35 +29,16 @@ public class NewUser extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newuser);
-        usernameEditText=(EditText)findViewById(R.id.semail);
+        usernameEditText=(EditText)findViewById(R.id.sname);
+        userEmEditText=(EditText)findViewById(R.id.semail);
         passwordEditText=(EditText)findViewById(R.id.spass);
-        signUpButton=(Button)findViewById(R.id.sibut);
-        final Spinner spinner = (Spinner) findViewById(R.id.spinner1);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.spnrr, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        signUpButton = (Button)findViewById(R.id.sibut);
 
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-        final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.spnrr2, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-// Apply the adapter to the spinner
-        spinner2.setAdapter(adapter2);
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String spinr = spinner.getSelectedItem().toString();
-                arr = getResources().getStringArray(R.array.arr1)[spinner.getSelectedItemPosition()];
-                String spinr2 = spinner2.getSelectedItem().toString();
-                arr2 = getResources().getStringArray(R.array.arr2)[spinner2.getSelectedItemPosition()];
+
                 SignUp();
 
 
@@ -67,13 +49,12 @@ public class NewUser extends Activity {
     }
     private void SignUp (){
         ParseUser user = new ParseUser();
-        ParseACL acl = new ParseACL(ParseUser.getCurrentUser());
-        acl.setRoleReadAccess("ad",true);
 
-       user.setUsername(usernameEditText.getText().toString());
+        user.setUsername(usernameEditText.getText().toString());
+        user.setEmail(userEmEditText.getText().toString());
         user.setPassword(passwordEditText.getText().toString());
-        user.put(Pid.S_Pnr, arr);
-        user.put(Pid.S_Pnr2, arr2);
+
+
 
 
 

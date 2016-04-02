@@ -37,11 +37,11 @@
         android:id="@+id/tvi1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_toRightOf="@id/imageView"
-        android:hint="aaaaaaaa"
-
-        />
+        android:hint="اسم النادي"
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/tvi4"
+        android:layout_toEndOf="@+id/tvi4" />
 
     <TextView
         android:id="@+id/tvi2"
@@ -56,6 +56,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/tvi3"
             android:layout_below="@+id/tvi2"
+            android:visibility="invisible"
             android:layout_toRightOf="@id/imageView"
             android:hint="cccccc" />
 
@@ -67,6 +68,8 @@
         android:layout_toRightOf="@+id/tvi3"
         android:id="@+id/tvi4"
         android:hint="tttt"
+        android:visibility="invisible"
+
         android:layout_marginLeft="15dp" />
 
 </RelativeLayout>

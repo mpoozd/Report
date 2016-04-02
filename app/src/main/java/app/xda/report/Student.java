@@ -172,9 +172,9 @@ public class Student extends AppCompatActivity implements GoogleApiClient.Connec
                     fileBytes = FileHelper.getByteArrayFromFile(Student.this, decodeUri);
 
 
-                    ImageView iii = (ImageView)findViewById(R.id.checkimg);
-                    Drawable im = ContextCompat.getDrawable(Student.this,R.mipmap.ic_action_tick);
-                    iii.setImageDrawable(im);
+                    ImageView iii = (ImageView)findViewById(R.id.imgbut);
+                    iii.setImageBitmap(BitmapFactory.decodeFile(getRealPathFromURI(decodeUri)));
+
 
                 }
 
@@ -319,8 +319,10 @@ displayLocation();
         mplate = (EditText) findViewById(R.id.plate1);
         mbut = (Button) findViewById(R.id.butsend);
         mbup = (Button)findViewById(R.id.butup);
+        ImageView iii = (ImageView)findViewById(R.id.imgbut);
 
-        mbup.setOnClickListener(new View.OnClickListener() {
+
+        iii.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent choosepic = new Intent(Intent.ACTION_GET_CONTENT);
@@ -342,11 +344,7 @@ displayLocation();
                 if (mLastLocation == null) {
                     textgg.setText("Please make sure GPS is enabled");
                 }
-                else {
-                if (dist > 0.150) {
-                    textgg.setText("You do not allowed to send a report ");
 
-                }
 
 
                 else  {
@@ -412,7 +410,7 @@ displayLocation();
                 }}
 
 
-            }
+
 
         });
         // First we need to check availability of play services

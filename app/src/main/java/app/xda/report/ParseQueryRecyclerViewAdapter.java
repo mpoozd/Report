@@ -189,7 +189,7 @@ public class ParseQueryRecyclerViewAdapter<T extends ParseObject> extends Recycl
         this(context, new QueryFactory<T>() {
             @Override
             public ParseQuery<T> create() {
-                ParseQuery<T> query = ParseQuery.getQuery("Post");
+                ParseQuery<T> query = ParseQuery.getQuery("Book");
                 ParseUser user = ParseUser.getCurrentUser();
 
                 query.orderByDescending("updatedAt");
